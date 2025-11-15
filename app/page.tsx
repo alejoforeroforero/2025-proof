@@ -33,10 +33,8 @@ export default function Home() {
 
   const handlePuzzleSubmit = () => {
     setCurrentScreen('blockchain')
-    
-    // Simulate blockchain verification delay
+
     setTimeout(() => {
-      // Randomly show success or failure (70% success rate)
       const isSuccess = Math.random() > 0.3
       setCurrentScreen(isSuccess ? 'success' : 'failure')
     }, 3000)
@@ -50,7 +48,6 @@ export default function Home() {
     alert('Redirecting to upload page...')
     setIsModalOpen(false)
     setCurrentScreen('verify')
-    // TODO: Navigate to actual upload page
   }
 
   const handleClose = () => {
@@ -62,7 +59,7 @@ export default function Home() {
     <main className="min-h-screen bg-gray-900 flex items-center justify-center">
       <button
         onClick={() => setIsModalOpen(true)}
-        className="bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-lg"
+        className="bg-pink-500 cursor-pointer hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-lg"
       >
         Open Verification Modal
       </button>

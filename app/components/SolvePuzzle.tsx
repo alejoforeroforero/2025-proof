@@ -15,6 +15,8 @@ export default function SolvePuzzle({ onSubmit }: SolvePuzzleProps) {
       const response = await fetch("/api/captcha/create");
       const data = await response.json();
 
+      console.log("get request token");
+
       setToken(data.token);
 
       return {
@@ -72,10 +74,13 @@ export default function SolvePuzzle({ onSubmit }: SolvePuzzleProps) {
         onVerify={handleVerify}
         tipText={{
           default: "Slide to complete the puzzle",
-          loading: "Loading...",
-          moving: "Sliding...",
-          error: "Try again",
-          success: "Success!",
+          loading: "Loading puzzle...",
+          moving: "Keep sliding...",
+          verifying: "Verifying...",
+          success: "Verified successfully!",
+          error: "Verification failed, try again",
+          errors: "Please try again",
+          loadFailed: "Failed to load puzzle, please refresh",
         }}
       />
     </div>
