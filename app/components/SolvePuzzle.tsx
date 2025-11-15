@@ -15,8 +15,6 @@ export default function SolvePuzzle({ onSubmit }: SolvePuzzleProps) {
       const response = await fetch("/api/captcha/create");
       const data = await response.json();
 
-      console.log('get request token')
-
       setToken(data.token);
 
       return {
@@ -69,7 +67,17 @@ export default function SolvePuzzle({ onSubmit }: SolvePuzzleProps) {
       <p className="text-gray-400 mb-6 leading-relaxed text-sm">
         Slide the puzzle piece to complete the image
       </p>
-      <SliderCaptcha request={handleRequest} onVerify={handleVerify} />
+      <SliderCaptcha
+        request={handleRequest}
+        onVerify={handleVerify}
+        tipText={{
+          default: "Slide to complete the puzzle",
+          loading: "Loading...",
+          moving: "Sliding...",
+          error: "Try again",
+          success: "Success!",
+        }}
+      />
     </div>
   );
 }

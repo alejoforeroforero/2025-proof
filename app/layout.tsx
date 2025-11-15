@@ -3,7 +3,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "Proof of Human",
+  title: "Demo Proof of Human",
   description: "Human verification with Cardano wallet",
 };
 
