@@ -24,8 +24,7 @@ export default function Home() {
 
   const handleConnect = () => {
     setCurrentScreen('connecting')
-    
-    // Simulate wallet connection delay
+
     setTimeout(() => {
       setCurrentScreen('puzzle')
     }, 2000)
@@ -45,7 +44,6 @@ export default function Home() {
   }
 
   const handleUploadSong = () => {
-    alert('Redirecting to upload page...')
     setIsModalOpen(false)
     setCurrentScreen('verify')
   }
@@ -59,7 +57,7 @@ export default function Home() {
     <main className="min-h-screen bg-gray-900 flex items-center justify-center">
       <button
         onClick={() => setIsModalOpen(true)}
-        className="bg-pink-500 cursor-pointer hover:bg-pink-600 text-white font-semibold py-3 px-6 rounded-lg"
+        className="btn-pink"
       >
         Open Verification Modal
       </button>

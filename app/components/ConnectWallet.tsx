@@ -11,14 +11,26 @@ export default function ConnectWallet({ onConnect }: ConnectWalletProps) {
   const { connected, connect } = useWallet();
   const wallets = useWalletList();
   const [showWallets, setShowWallets] = useState(false);
+  const [hasCheckedInitialConnection, setHasCheckedInitialConnection] = useState(false);
+
+  // Check if already connected on mount
+  useEffect(() => {
+    if (!hasCheckedInitialConnection) {
+      setHasCheckedInitialConnection(true);
+      if (connected) {
+        console.log("✅ Wallet already connected!");
+        onConnect();
+      }
+    }
+  }, []);
 
   // Move to next screen when connected - RUNS AFTER RENDER
   useEffect(() => {
-    if (connected) {
+    if (connected && hasCheckedInitialConnection) {
       console.log("✅ Wallet connected!");
       onConnect();
     }
-  }, [connected, onConnect]);
+  }, [connected, onConnect, hasCheckedInitialConnection]);
 
   // Handle wallet selection
   const handleWalletClick = async (walletName: string) => {
@@ -32,29 +44,31 @@ export default function ConnectWallet({ onConnect }: ConnectWalletProps) {
   };
 
   return (
-    <div className="text-center">
-      <h2 className="text-2xl font-semibold text-white mb-4">
+    <div className="text-center pt-2">
+      <h2 className="text-3xl font-bold mb-6">
         Connect Your Wallet
       </h2>
-      
-      <p className="text-gray-400 mb-8 leading-relaxed">
-        Connect your Cardano wallet to confirm {`you're`} human and upload your song.
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent mb-8"></div>
+
+      <p className="mb-12 leading-relaxed text-base">
+        Connect your Cardano wallet prior to verification.
       </p>
 
       {!showWallets ? (
         // Main connect button
         <button
+          type="button"
           onClick={() => setShowWallets(true)}
-          className="w-full cursor-pointer bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 shadow-lg hover:shadow-pink-500/50"
+          className="btn-pink"
         >
           Connect Wallet
         </button>
       ) : (
         // Wallet list
         <div className="space-y-3">
-          <p className="text-gray-300 text-sm mb-4">
-            {wallets.length > 0 
-              ? "Choose a wallet:" 
+          <p className="text-sm mb-4">
+            {wallets.length > 0
+              ? "Choose a wallet:"
               : "No wallets detected. Please install Lace, Nami, or another Cardano wallet."}
           </p>
           
@@ -77,7 +91,7 @@ export default function ConnectWallet({ onConnect }: ConnectWalletProps) {
           
           <button
             onClick={() => setShowWallets(false)}
-            className="w-full text-gray-400 hover:text-white text-sm mt-4 transition-colors"
+            className="w-full text-gray-400 hover:text-white mt-4 transition-colors text-[14px]"
           >
             ← Back
           </button>

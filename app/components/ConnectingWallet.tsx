@@ -28,15 +28,15 @@ export default function ConnectingWallet() {
       </div>
 
       {/* Loading Text */}
-      <p className="text-gray-400 text-lg">
+      <p className="text-lg">
         Connecting To Your Wallet...
       </p>
 
       {/* Address Display (only shows if address is loaded) */}
       {address && (
         <div className="mt-6 bg-gray-800 rounded-lg p-3 max-w-sm mx-auto">
-          <p className="text-gray-500 text-xs mb-1">Connected Address:</p>
-          <p className="text-gray-300 font-mono text-xs break-all">
+          <p className="text-xs mb-1">Connected Address:</p>
+          <p className="font-mono text-xs break-all">
             {address.slice(0, 20)}...{address.slice(-20)}
           </p>
         </div>

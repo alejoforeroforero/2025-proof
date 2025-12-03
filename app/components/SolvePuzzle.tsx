@@ -62,27 +62,32 @@ export default function SolvePuzzle({ onSubmit }: SolvePuzzleProps) {
   };
 
   return (
-    <div className="text-center">
-      <h2 className="text-2xl font-semibold text-white mb-4">
-        Prove {`You're`} Human
+    <div className="text-center pt-2">
+      <h2 className="text-[28px] font-semibold mb-6 leading-none">
+        Complete Verification
       </h2>
-      <p className="text-gray-400 mb-6 leading-relaxed text-sm">
-        Slide the puzzle piece to complete the image
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent mb-8"></div>
+
+      <p className="mb-12 leading-none text-[14px] font-medium">
+        Almost There! Please Solve the puzzle below to confirm you&apos;re human. <br></br>
+Slide the puzzle piece to the right place.
       </p>
-      <SliderCaptcha
-        request={handleRequest}
-        onVerify={handleVerify}
-        tipText={{
-          default: "Slide to complete the puzzle",
-          loading: "Loading puzzle...",
-          moving: "Keep sliding...",
-          verifying: "Verifying...",
-          success: "Verified successfully!",
-          error: "Verification failed, try again",
-          errors: "Please try again",
-          loadFailed: "Failed to load puzzle, please refresh",
-        }}
-      />
+      <div className="flex justify-center items-center">
+        <SliderCaptcha
+          request={handleRequest}
+          onVerify={handleVerify}
+          tipText={{
+            default: "Slide to complete the puzzle",
+            loading: "Loading puzzle...",
+            moving: "Keep sliding...",
+            verifying: "Verifying...",
+            success: "Verified successfully!",
+            error: "Verification failed, try again",
+            errors: "Please try again",
+            loadFailed: "Failed to load puzzle, please refresh",
+          }}
+        />
+      </div>
     </div>
   );
 }

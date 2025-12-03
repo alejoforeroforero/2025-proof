@@ -9,7 +9,7 @@ export default function BlockchainVerifying() {
       </div>
 
       {/* Loading Text */}
-      <p className="text-gray-400 text-lg">
+      <p className="text-lg">
         Securely Verifying On The Blockchain...
       </p>
     </div>

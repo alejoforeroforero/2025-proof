@@ -59,36 +59,20 @@ export default function SuccessScreen({ onUploadSong }: SuccessScreenProps) {
   console.log('🔍 Current address state:', address);
 
   return (
-    <div className="text-center">
-      {/* Success Icon */}
-      <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center">
-        <svg 
-          className="w-10 h-10 text-white" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24"
-        >
-          <path 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            strokeWidth={3} 
-            d="M5 13l4 4L19 7"
-          />
-        </svg>
-      </div>
-
+    <div className="text-center pt-2">
       {/* Title */}
-      <h2 className="text-2xl font-semibold text-white mb-4">
-        {`You're`} Verified!
+      <h2 className="text-[28px] font-semibold mb-6 leading-none">
+        You&apos;re Verified!
       </h2>
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent mb-8"></div>
 
       {/* Description */}
-      <p className="text-gray-400 mb-6 leading-relaxed">
+      <p className="mb-12 leading-none text-[14px] font-medium">
         Verification complete! Welcome to the human side of music.
       </p>
 
       {/* Wallet Address Display */}
-      {address ? (
+      {/* {address ? (
         <div className="bg-gray-800 rounded-lg p-4 mb-6">
           <p className="text-gray-500 text-xs mb-2">Verified Wallet:</p>
           <p className="text-gray-300 font-mono text-xs break-all">
@@ -99,14 +83,14 @@ export default function SuccessScreen({ onUploadSong }: SuccessScreenProps) {
         <div className="bg-gray-800 rounded-lg p-4 mb-6">
           <p className="text-gray-500 text-xs">Loading wallet address...</p>
         </div>
-      )}
+      )} */}
 
       {/* Upload Button */}
       <button
         onClick={onUploadSong}
-        className="w-full bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 shadow-lg hover:shadow-pink-500/50"
+        className="btn-pink"
       >
-        Upload Song Now
+        Close Verification Modal & Restart
       </button>
     </div>
   )
